@@ -10,9 +10,9 @@ class HomeController extends Controller
         echo "Hello from Home Controller INDEX";
     }
 
-    public function show()
+    public function show($id)
     {
-        echo "Hello from Home Controller SHOW";
+        echo "Hello from Home Controller SHOW $id";
     }
 
 }

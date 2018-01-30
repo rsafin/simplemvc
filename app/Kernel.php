@@ -17,12 +17,12 @@ class Kernel
     public function handle(Request $request)
     {
         $this->bootstrap();
-        $this->dispatchToRouter($request);
+        return $this->dispatchToRouter($request);
     }
 
     private function dispatchToRouter($request)
     {
-        $this->router->dispatch($request);
+        return $this->router->dispatch($request);
     }
 
     private function bootstrap()

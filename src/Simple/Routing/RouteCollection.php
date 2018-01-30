@@ -10,17 +10,23 @@ class RouteCollection
 
     public function add(Route $route)
     {
-        $this->routes[$route->methods()][$route->uri()] = $route;
+        $this->routes[$route->methods()][$route->getUri()] = $route;
         return $route;
     }
 
     public function match(Request $request)
     {
-        //TODO: переработать функцию поиска нужного роута
         $routes = $this->get($request->getMethod());
-        return $route = $routes[$request->getRequestUri()];
 
-        //TODO: throw Exception route not found
+        foreach ($routes as $route)
+        {
+            if($route->matches($request)) {
+                return $route;
+            };
+
+        }
+
+        return $route = $routes[$request->getRequestUri()];
     }
 
     public function get($method)

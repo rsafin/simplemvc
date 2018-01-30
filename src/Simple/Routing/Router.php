@@ -23,7 +23,10 @@ class Router
 
     public function dispatchToRoute (Request $request)
     {
-        return $this->runRoute($this->findRoute($request));
+        $route = $this->findRoute($request);
+        $route->bind($request);
+
+        return $this->runRoute($route);
     }
 
     private function runRoute($route)
@@ -41,6 +44,11 @@ class Router
     public function get($uri, $action)
     {
         $this->addRoute('GET', $uri, $action);
+    }
+
+    public function post($uri, $action)
+    {
+        $this->addRoute('POST', $uri, $action);
     }
 
     private function addRoute($method, $uri, $action)
