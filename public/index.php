@@ -30,5 +30,9 @@ $router->get('/show', 'homeController@show');
 $router->get('/show/{id}/', 'homeController@show');
 $router->get('/news/{id}/comment/{id}', 'homeController@show');
 
+$request = Request::capture();
+
+Application::store('request', $request);
+
 $kernel =  new Kernel($application, $router);
-$response = $kernel->handle(Request::capture());
+$response = $kernel->handle($request);

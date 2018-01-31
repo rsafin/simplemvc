@@ -20,6 +20,7 @@ class Kernel
         return $this->dispatchToRouter($request);
     }
 
+
     private function dispatchToRouter($request)
     {
         return $this->router->dispatch($request);
@@ -29,4 +30,5 @@ class Kernel
     {
         $this->application->bootstrap();
     }
+
 }

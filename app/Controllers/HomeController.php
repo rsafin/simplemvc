@@ -12,6 +12,8 @@ class HomeController extends Controller
 
     public function show($id)
     {
+        $request = \Application::get('request');
+
         echo "Hello from Home Controller SHOW $id";
     }
 
